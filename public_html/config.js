@@ -5,6 +5,12 @@
 //
 // --------------------------------------------------------
 
+// -- Title settings --------------------------------------
+// Added options to display the current number of airplanes
+// and messages/second in the title of the page.
+NumPlanesInTitle = true;
+NumMessagesInTitle = true;
+
 // -- Formatting Settings ---------------------------------
 // Enable or disable Metric and`/or Imperial formatting
 // Controls the units shown on the map and in the table

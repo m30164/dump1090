@@ -1,4 +1,4 @@
-"use strict";
+	"use strict";
 
 // Define our global variables
 var GoogleMap     = null;
@@ -38,6 +38,7 @@ var StaleReceiverCount = 0;
 var FetchPending = null;
 
 var MessageCountHistory = [];
+var MessagesPerSecond = 0;
 
 // Sorting variables
 var sortId = '';
@@ -508,8 +509,22 @@ function reaper() {
 	refreshSelected();
 }
 
+// Page Title update function
+function refreshPageTitle() {
+	if(NumPlanesInTitle && !NumMessagesInTitle){
+		$("head title").text("DUMP1090 - " + TrackedAircraftPositions);
+	}
+	else if(!NumPlanesInTitle && NumMessagesInTitle){
+		$("head title").text("DUMP1090 - " + MessagesPerSecond.toFixed(1));
+	}
+	else if(NumPlanesInTitle && NumMessagesInTitle){
+		$("head title").text("DUMP1090 - " + TrackedAircraftPositions + " | " + MessagesPerSecond.toFixed(1)); 
+	}
+}
+
 // Refresh the detail window about the plane
 function refreshSelected() {
+	refreshPageTitle();
 	var selected = false;
 	if (typeof SelectedPlane !== 'undefined' && SelectedPlane != "ICAO" && SelectedPlane != null) {
 		selected = Planes[SelectedPlane];
@@ -536,6 +551,8 @@ function refreshSelected() {
 		}
 	
 		if (message_rate !== null){
+			MessagesPerSecond = message_rate;
+			
 			$('#dump1090_message_rate').text(message_rate.toFixed(1));
 			
 			if(message_rate > MaxMessagesPerSec){
