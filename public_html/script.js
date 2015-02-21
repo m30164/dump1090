@@ -934,8 +934,7 @@ function toggleUnits(){
 		EnableMetric = true;
 		EnableImperial = true;
 	} else if(EnableImperial && EnableMetric){
-		//EnableMetric=true;
-		//EnableImperial=false;
-		PreferMetric != PreferMetric
+		EnableMetric=true;
+		EnableImperial=false;
 	}
 }
