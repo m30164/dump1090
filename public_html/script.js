@@ -925,3 +925,17 @@ function drawCircle(marker, distance) {
 	
 	circle.bindTo('center', marker, 'position');
 }
+
+function toggleUnits(){
+	if(EnableMetric && !EnableImperial){
+		EnableMetric = false;
+		EnableImperial = true;
+	} else if(!EnableMetric && EnableImperial){
+		EnableMetric = true;
+		EnableImperial = true;
+	} else if(EnableImperial && EnableMetric){
+		//EnableMetric=true;
+		//EnableImperial=false;
+		PreferMetric != PreferMetric
+	}
+}
